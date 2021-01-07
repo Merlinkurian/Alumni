@@ -1,0 +1,49 @@
+{% extends 'alumnibase.html' %}
+{% block content %}
+<style>
+th,td{
+    padding: 10px;
+}
+th{
+    background-color: black;
+    color: white;
+}
+</style>
+<div style="margin: 50px;">
+    <h1 style="margin: 10px;">Events</h1>
+    
+    <table border='1' style="margin:50px;">
+        <tr>
+            <th>EVENT ID</th>
+            <th>EVENT</th>
+            <th>DATE</th>
+            <th>TIME</th>
+            <th>VENUE</th>
+            <th>DESCRIPTION</th>
+            <th>ADULT RATE</th>
+            <th colspan="2">CHILDREN RATE</th>
+            
+        </tr>
+        {% for d in data %}
+        <tr>
+            <td>{{d.0}}</td>
+            <td>{{d.1}}</td>
+            <td>{{d.2}}</td>
+            <td>{{d.3}}</td>
+            <td>{{d.4}}</td>
+            <td>{{d.5}}</td>
+            <td>{{d.6}}</td>
+            <td>{{d.7}}</td>
+            <td><a href="/eventregistration?eventid={{d.0}} &adultrate={{d.6}} &otherrate={{d.7}}"><b>REGISTER HERE</b></a></td></tr>
+            
+        </tr>
+        {% endfor %}
+    </table>
+    
+</div>
+<script>
+    var msg="{{msg}}";
+    if(msg!="")
+        alert(msg)
+    </script>
+{% endblock %}

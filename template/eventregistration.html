@@ -1,0 +1,39 @@
+{% extends 'alumnibase.html' %}
+{% block content %}
+<style>
+    th,td{
+        padding: 10px;
+    }
+    th{
+        background-color: black;
+        color: white;
+    }
+    </style>
+    <div style="margin: 50px;">
+        <h1 style="margin: 10px;">Event Registration</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>No Of Adults</td>
+                    <td><input type="text" maxlength="1" class="form-control" name="ar" required></td>
+                </tr>
+                <tr>
+                    <td>No Of Children</td>
+                    <td><input type="text" class="form-control" name="otr" required></td>
+                </tr>
+               
+                    <td></td>
+                    <td><input type="submit" class="btn btn-primary" value="Submit"></td>
+                </tr>
+            </table>
+        </form>
+        
+        
+    </div>
+    <script>
+        var msg="{{msg}}";
+        if(msg!="")
+            alert(msg)
+        </script>
+    {% endblock %}

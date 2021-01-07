@@ -1,0 +1,51 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<style>
+th,td{
+    padding: 10px;
+}
+th{
+    background-color: black;
+    color: white;
+}
+</style>
+<div style="margin: 50px;">
+    <h1 style="margin: 10px;">Batch</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Enter the file</td>
+                <td><input type="file" name="txtfile" required></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="btnsubmit"></td>
+            </tr>
+           
+        </table>
+    </form>
+    <table border='1' style="margin:50px;">
+        <tr>
+            <th>NAME</th>
+            <th>YEAR OF PASSING</th>
+            <th>REGISTRATION NUMBER</th>
+            <th>ALUMNI ID</th>
+            <th>CONTACT</th>
+        </tr>
+        {% for d in data %}
+        <tr>
+            <td>{{d.0}}</td>
+            <td>{{d.1}}</td>
+           <td>{{d.2}}</td>
+           <td>{{d.3}}</td>
+           <td>{{d.4}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<script>
+    var msg="{{msg}}";
+    if(msg!="")
+        alert(msg)
+    </script>
+{% endblock %}

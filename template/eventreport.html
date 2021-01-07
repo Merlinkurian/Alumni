@@ -1,0 +1,52 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<style>
+th,td{
+    padding: 10px;
+}
+th{
+    background-color: black;
+    color: white;
+}
+</style>
+<div style="margin: 50px;">
+ 
+<table border='1' style="margin-top: 50px;">
+    <th>EVENT ID</th>
+<th> EVENT NAME</th>
+<th>EVENT DATE</th>
+<th>  TIME</th>
+
+<th>VENUE</th>
+
+<th>DESCRIPTION</th>
+
+<th>ADULT RATE</th>
+
+<th>OTHER RATE</th>
+
+
+{% for i in data %}
+<tr><td>{{i.0}}</td>
+<td>{{i.1}}</td>
+
+<td>{{i.2}}</td>
+
+<td>{{i.3}}</td>
+<td>{{i.4}}</td>
+<td>{{i.5}}</td>
+
+<td>{{i.6}}</td>
+<td>{{i.7}}</td>
+</tr>
+
+
+{% endfor %}
+</table>
+   </div>
+<script>
+    var msg="{{msg}}";
+    if(msg!="")
+        alert(msg)
+    </script>
+{% endblock %}

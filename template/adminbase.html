@@ -1,0 +1,140 @@
+<!--
+	Author: W3layouts
+	Author URL: http://w3layouts.com
+	License: Creative Commons Attribution 3.0 Unported
+	License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>Alumni</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Collegian a Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <link href="../static/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="../static/css/nav.css" rel='stylesheet' type='text/css' />
+    <link href="../static/css/style.css" rel='stylesheet' type='text/css' />
+    <link href="../static/css/fontawesome-all.css" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+</head>
+
+<body>
+    <div class="inner-page" id="home">
+        <!--/nav-->
+        <div class="top_nav">
+            <h1>
+                <a class="logo" href="/">Alumni</a>
+            </h1>
+          
+            <div class="container-btn" id="btn">
+                <div class="text">Menu</div>
+                <div id="bars">
+                    <div class="bar first"></div>
+                    <div class="bar second"></div>
+                    <div class="bar third"></div>
+                </div>
+            </div>
+
+
+            <!-- top-overlay -->
+            <div class="top-overlay fade-out" id="menu">
+                <nav class="top-overlay-content" id="nav">
+                    <span class="top-overlay-close" id="close-btn"> &times; </span>
+                    <div class="container" id="container">
+                        <div class="first-nav text-center">
+                          <ul class="first-nav text-center">
+                            <li><a href="/adminhome">Home</a></li>
+                            <li><a href="/adminbatch">Batch</a></li>
+                            <li><a href="/adminalumni">Alumni</a></li>
+                            <li><a href="/adminevent">Event</a></li>
+                            
+                            
+                            <!-- <li><a href="/emgallery" class="dropdown">Gallery</a></li> -->
+                            <li class="dropdown">
+                              <button class="dropbtn">Reports <i class="fas fa-angle-down"></i></button>
+                              <div class="dropdown-content">
+                                <a href="/batchreport">Batch Report</a>
+                                <a href="/alumnireport">Alumni Report</a>
+                                 <a href="/unregisteredreport">Unregistered</a>
+                                 <a href="/eventreport">Event Report</a>
+                                 <a href="/meetreport">Alumni meet report</a>
+                              </div>
+                            </li> 
+                            <li><a href="/login">Logout</a></li>
+                        </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <!--//nav-->
+        </div>
+        <!-- banner-inner -->
+	<div class="banner-inner">
+			
+
+	</div>
+	<!--// banner-inner -->
+    </div>
+    <!---->
+    {% block content %}
+    {% endblock %}
+
+<!-- copyright -->
+<div class="copy_right_w3ls py-4 text-center">
+    <p>© 2018 Collegian. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+	
+</div>
+<!-- //copyright -->
+    <!-- js -->
+    <script src="../static/js/jquery-2.2.3.min.js"></script>
+    <!-- menu -->
+    <script src="../static/js/index.js"></script>
+    <script src="../static/js/modernizr.custom.js"></script>
+    <!-- //menu -->
+    <!-- //js -->
+    <script src="../static/js/bootstrap.js"></script>
+    <!--/ start-smoth-scrolling -->
+    <script src="../static/js/move-top.js"></script>
+    <script src="../static/js/easing.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 900);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            /*
+            						var defaults = {
+            							  containerID: 'toTop', // fading element id
+            							containerHoverID: 'toTopHover', // fading element hover id
+            							scrollSpeed: 1200,
+            							easingType: 'linear' 
+            						 };
+            						*/
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <!--// end-smoth-scrolling -->
+</body>
+
+</html>

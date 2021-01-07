@@ -1,0 +1,43 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<style>
+th,td{
+    padding: 10px;
+}
+th{
+    background-color: black;
+    color: white;
+}
+</style>
+<div style="margin: 50px;">
+ 
+<table border='1' style="margin-top: 50px;">
+<th>NAME</th>
+<th>YEAR OF PASSING</th>
+<th> REGISTER NO</th>
+
+<th>ALUMNI ID</th>
+
+<th>Contact</th>
+
+
+{% for i in data %}
+<tr><td>{{i.0}}</td>
+<td>{{i.1}}</td>
+
+<td>{{i.2}}</td>
+
+<td>{{i.3}}</td>
+<td>{{i.4}}</td>
+</tr>
+
+
+{% endfor %}
+</table>
+   </div>
+<script>
+    var msg="{{msg}}";
+    if(msg!="")
+        alert(msg)
+    </script>
+{% endblock %}

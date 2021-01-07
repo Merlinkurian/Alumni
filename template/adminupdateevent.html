@@ -1,0 +1,61 @@
+{% extends 'adminbase.html' %}
+{% block content %}
+<style>
+th,td{
+    padding: 10px;
+}
+th{
+    background-color: black;
+    color: white;
+}
+</style>
+<div style="margin: 50px;">
+    <h1 style="margin: 10px;">Events</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            {% for d in data %}
+            <tr>
+                <td>Event</td>
+                <td><input type="text" class="form-control" value="{{d.1}}" name="txtEvent" required></td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td><input type="text" class="form-control" value="{{d.2}}" name="txtDate" required></td>
+            </tr>
+            <tr>
+                <td>Time</td>
+                <td><input type="text" class="form-control" value="{{d.3}}" name="txtTime" required></td>
+            </tr>
+            <tr>
+                <td>Venue</td>
+                <td><input type="text" class="form-control" value="{{d.4}}" name="txtVenue" required></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><input type="text" class="form-control" name="txtDesc" value="{{d.5}}" required></td>
+            </tr>
+            <tr>
+                <td>Rate For Adult</td>
+                <td><input type="text" class="form-control" name="ratea" value="{{d.6}}" required></td>
+            </tr>
+            <tr>
+                <td>Rate For ***</td>
+                <td><input type="text" class="form-control" name="rateb" value="{{d.7}}" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" class="btn btn-primary" value="Update"></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+    
+    
+</div>
+<script>
+    var msg="{{msg}}";
+    if(msg!="")
+        alert(msg)
+    </script>
+{% endblock %}

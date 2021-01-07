@@ -1,0 +1,60 @@
+{% extends 'alumnibase.html' %}
+{% block content %}
+<style>
+th,td{
+    padding: 10px;
+}
+</style>
+<div style="margin: 50px;">
+    <h1 style="margin: 10px;">Profile</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table style="width:500px">
+            {% for d in data %}
+            <tr><td colspan="2"><img src="../static{{d.7}}" height="250px" width="200px" ></td></tr>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" class="form-control" value="{{d.1}}" name="txtName" required></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td><input type="text" class="form-control" value="{{d.2}}" name="txtGender" required></td>
+            </tr>
+            <tr>
+                <td>DOB</td>
+                <td><input type="text" class="form-control" value="{{d.3}}" name="txtDob" required></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td><textarea class="form-control" name="txtAddress" required>{{d.4}}</textarea></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><input type="text" class="form-control" name="txtContact" value="{{d.5}}" pattern="[6789][0-9]{9}" required></td>
+            </tr>
+            
+            <tr>
+                <td>Qualification</td>
+                <td><input type="text" class="form-control" value="{{d.6}}" name="txtQual" required></td>
+            </tr>
+            
+            <tr>
+                <td>Email</td>
+                <td><input type="email" class="form-control" value="{{d.8}}" name="txtEmail" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" class="btn btn-primary" value="Update"></td>
+            
+            </tr>
+            {% endfor %}
+            
+        </table>
+    </form>
+</div>
+<script>
+    var msg="{{msg}}";
+    if(msg!="")
+        alert(msg)
+    </script>
+{% endblock %}

@@ -1,0 +1,132 @@
+{% extends 'commonbase.html' %}
+{% block content %}
+<style>
+th,td{
+    padding: 10px;
+}
+</style>
+<div style="margin: 50px;">
+    <h1 style="margin: 10px;">Registration</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Year of passing</td>
+                <td><select name="yop" id="yop" class="form-control" required>
+                    <option>-----Select-----</option>
+                    {% for i in batch %}
+                        <option value="{{i.0}}">{{i.0}}</option>
+                    {% endfor %}
+                </select></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><select name="txtName" id="txtname" class="form-control" required>
+                    <option>-----Select-----</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td><input type="radio" name="txtGender" value="Male" required>Male
+                    <input type="radio" name="txtGender" value="Female" required>Female
+                    <input type="radio" name="txtGender" value="Transgender" required>Transgender</td>
+            </tr>
+            <tr>
+                <td>DOB</td>
+                <td><input type="date" class="form-control"  name="txtDob" required></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td><textarea class="form-control" name="txtAddress" required></textarea></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><input type="number" class="form-control" name="txtContact" pattern="[6789][0-9]{9}" maxlength="10" required></td>
+            </tr>
+            
+            
+            
+            <tr>
+                <td>Qualification</td>
+                <td><input type="text" class="form-control" name="txtQual" required></td>
+            </tr>
+            <tr>
+                <td>Upload your photo</td>
+                <td><input type="file" class="form-control" name="txtFile" required></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="email" class="form-control" name="txtEmail" required></td>
+            </tr>
+            <tr>
+                <td>Where you recruited by campus interview?</td>
+                <td><input type="radio"  name="rec" value="Yes" required>Yes
+                    <input type="radio"  name="rec" value="No" required>No</td>
+            </tr>
+            <tr>
+                <td>Company Name</td>
+                <td><input type="text" class="form-control" name="txtcompany" required></td>
+            </tr>
+            <tr>
+                <td>Designation</td>
+                <td><input type="text" class="form-control" name="txtdesig" required></td>
+            </tr>
+            <tr>
+                <td>Current working company</td>
+                <td><input type="text" class="form-control" name="txtcurrentcompany" required></td>   
+            </tr>
+            <tr>
+                <td>Designation</td>
+                <td><input type="text" class="form-control" name="txtdesignation" required></td>   
+            </tr>
+            <tr>
+                <td>Martial Status</td>
+                <td><select name="txtmartialstatus" id="txtmartialstatus" class="form-control" required>
+                    <option>-----Select-----</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>Spouse Name</td>
+                <td><input type="text" class="form-control" name="txtSpousename" required></td>   
+            </tr>
+            <tr>
+                <td>Spouse Company Name</td>
+                <td><input type="text" class="form-control" name="txtSpousecompanyname" required></td>   
+            </tr>
+            <tr>
+                <td>Spouse Designation</td>
+                <td><input type="text" class="form-control" name="txtSpousedesignation" required></td>   
+            </tr>
+            
+                <td><input type="submit" class="btn btn-primary" value="Register"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script>
+    
+    $(document).ready(function(){
+        $("#yop").change(function(){
+            var y=$("#yop").val()
+            $.ajax({
+                url: "/getnames?yop="+y,
+                type:'GET',
+                success: function(data) 
+                { 
+                    // alert(data);
+                    var jsondata=$.parseJSON(data);
+                    
+                    $(jsondata).each(function (index, o) {   
+                        // alert(o); 
+                        $('#txtname').append($('<option>').text(o).attr('value', o));
+                    });
+                }
+            });
+        });
+    });
+    var msg="{{msg}}";
+    if(msg!="")
+        alert(msg)
+    </script>
+{% endblock %}

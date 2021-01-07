@@ -1,0 +1,80 @@
+ {% extends 'adminbase.html' %}
+{% block content %}
+<style>
+th,td{
+    padding: 10px;
+}
+th{
+    background-color: black;
+    color: white;
+}
+</style>
+<div style="margin: 50px;">
+    <h1 style="margin: 10px;">Alumni</h1>
+    To be approved
+    <table border='1' >
+        <tr>
+            <th>NAME</th>
+            <th>GENDER</th>
+            <th>DOB</th>
+            <th>ADDRESS</th>
+            <th>PHONE</th>
+            
+            <th>QUALIFICATION</th>
+            <th>IMAGE</th>
+            <th>EMAIL</th>
+            <th colspan="3">RECRUITED FROM COLLEGE</th>
+        </tr>
+        {% for d in data %}
+        <tr>
+            <td>{{d.1}}</td>
+            <td>{{d.2}}</td>
+            <td>{{d.3}}</td>
+            <td>{{d.4}}</td>
+            <td>{{d.5}}</td>
+            
+            <td>{{d.6}}</td>
+            <td><img src='../static{{d.7}}' height="100px" width="2000px"></td>
+            <td>{{d.8}}</td>
+            <td>{{d.9}}</td>
+            <td><a href="/adminupdatealumni?id={{d.0}}&status=1">Approve</a></td>
+            <td><a href="/adminupdatealumni?id={{d.0}}&status=-1">Reject</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    Approved list
+    <table border='1' style="margin-top: 50px;">
+        <tr>
+            <th>NAME</th>
+            <th>GENDER</th>
+            <th>DOB</th>
+            <th>ADDRESS</th>
+            <th>PHONE</th>
+            
+            <th>QUALIFICATION</th>
+            <th>IMAGE</th>
+            <th>EMAIL</th>
+            <th colspan="3">RECRUITED FROM COLLEGE</th>
+        </tr>
+        {% for d in data1 %}
+        <tr>
+            <td>{{d.1}}</td>
+            <td>{{d.2}}</td>
+            <td>{{d.3}}</td>
+            <td>{{d.4}}</td>
+            <td>{{d.5}}</td>
+            
+            <td>{{d.6}}</td>
+            <td><img src='../static{{d.7}}' height="100px" width="2000px"></td>
+            <td>{{d.8}}</td>
+            <td>{{d.9}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<script>
+    var msg="{{msg}}";
+    if(msg!="")
+        alert(msg)
+    </script>
+{% endblock %}
