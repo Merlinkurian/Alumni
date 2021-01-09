@@ -65,37 +65,41 @@ th,td{
             </tr>
             <tr>
                 <td>Company Name</td>
-                <td><input type="text" class="form-control" name="txtcompany" required></td>
+                <td><input type="text" class="form-control" name="txtcompany"></td>
             </tr>
             <tr>
                 <td>Designation</td>
-                <td><input type="text" class="form-control" name="txtdesig" required></td>
+                <td><input type="text" class="form-control" name="txtdesig"></td>
             </tr>
             <tr>
+                <td>whatsapp</td>
+                <td><input type="number" class="form-control" name="txtwhatsapp" pattern="[6789][0-9]{9}" maxlength="10" required></td>
+            </tr>
+            
                 <td>Current working company</td>
                 <td><input type="text" class="form-control" name="txtcurrentcompany" required></td>   
             </tr>
             <tr>
                 <td>Designation</td>
-                <td><input type="text" class="form-control" name="txtdesignation" required></td>   
+                <td><input type="text" class="form-control" name="txtcurrentdesignation" required></td>   
             </tr>
             <tr>
                 <td>Martial Status</td>
-                <td><select name="txtmartialstatus" id="txtmartialstatus" class="form-control" required>
-                    <option>-----Select-----</option>
-                </select></td>
+                <td><input type="radio" name="txtstatus" value="Single" required>Single
+                    <input type="radio" name="txtstatus" value="Married" required>Married
+            </tr>
             </tr>
             <tr>
                 <td>Spouse Name</td>
-                <td><input type="text" class="form-control" name="txtSpousename" required></td>   
+                <td><input type="text" class="form-control" name="txtspousename"></td>   
             </tr>
             <tr>
                 <td>Spouse Company Name</td>
-                <td><input type="text" class="form-control" name="txtSpousecompanyname" required></td>   
+                <td><input type="text" class="form-control" name="txtspousecompanyname"></td>   
             </tr>
             <tr>
                 <td>Spouse Designation</td>
-                <td><input type="text" class="form-control" name="txtSpousedesignation" required></td>   
+                <td><input type="text" class="form-control" name="txtspousedesignation"></td>   
             </tr>
             
                 <td><input type="submit" class="btn btn-primary" value="Register"></td>

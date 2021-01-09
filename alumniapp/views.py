@@ -104,16 +104,17 @@ def registration(request):
         desig=request.POST["txtdesig"]
         whatsapp=request.POST["txtwhatsapp"]
         currentcompany=request.POST["txtcurrentcompany"]
-        currentdesig=request.POST["txtcurrentdesigntion"]
-        martial=request.POST["txtmartial"]
-        spouse=request.POST["txtspousename"]
-        spousedesig=request.POST["txtspousedesigntion"]
+        currentdesig=request.POST["txtcurrentdesignation"]
+        martial=request.POST["txtstatus"]
+        spousename=request.POST["txtspousename"]
+        spousecompany=request.POST["txtspousecompanyname"]
+        spousedesig=request.POST["txtspousedesignation"]
         s="select alumniid from tblbatchdetails where name='"+name+"' and yop='"+yop+"'"
         c.execute(s)
         i=c.fetchone()
         alumniid=i[0]
         
-        s="insert into tblalumni(alumniid,alumniname,gender,dob,address,phone,qual,image,email,recruited,company,designation,whatsapp,currentcompany,currentdesig,martialstatus,spousename,spousecompany,spousedesig) values('"+alumniid+"','"+name+"','"+gender+"','"+dob+"','"+address+"','"+phone+"','"+qual+"','"+uploaded_file_url+"','"+email+"','"+recruited+"','"+company+"','"+desig+"','"+whatsapp+"','"+currentcompany+"','"+currentdesig+"','"+martialstatus+"','"+spousename+"','"+spousecompany+"','"+spousedesig+"')"
+        s="insert into tblalumni(alumniid,alumniname,gender,dob,address,phone,qual,image,email,recruited,company,designation,whatsapp,currentcompany,currentdesig,martialstatus,spousename,spousecompany,spousedesig) values('"+alumniid+"','"+name+"','"+gender+"','"+dob+"','"+address+"','"+phone+"','"+qual+"','"+uploaded_file_url+"','"+email+"','"+rec+"','"+company+"','"+desig+"','"+whatsapp+"','"+currentcompany+"','"+currentdesig+"','"+martial+"','"+spousename+"','"+spousecompany+"','"+spousedesig+"')"
         try:
               
                 c.execute(s)
@@ -576,7 +577,14 @@ def alumnihome(request):
         phone=request.POST["txtContact"]
         qual=request.POST["txtQual"]
         eemail=request.POST["txtEmail"]
-        s="update tblalumni set alumniname='"+name+"', gender='"+gender+"',dob='"+dob+"',address='"+address+"',phone='"+phone+"',qual='"+qual+"',email='"+eemail+"' where alumniid='"+email+"'"
+        whatsapp=request.POST["txtwhatsapp"]
+        currentcompany=request.POST["txtcurrentcompanyname"]
+        currentdesig=request.POST["txtcurrentdesignation"]
+        martial=request.POST["txtstatus"]
+        spousename=request.POST["txtspousename"]
+        spousecompany=request.POST["txtspousecompanyname"]
+        spousedesig=request.POST["txtspousedesignation"]
+        s="update tblalumni set alumniname='"+name+"', gender='"+gender+"',dob='"+dob+"',address='"+address+"',phone='"+phone+"',qual='"+qual+"',email='"+eemail+"',whatsapp='"+whatsapp+"',currentcompany='"+currentcompany+"',currentdesig='"+currentdesig+"',martialstatus='"+martial+"',spousename='"+spousename+"',spousecompany='"+spousecompany+"',spousedesig='"+spousedesig+"' where alumniid='"+email+"'"
         print(s)
         try:
             c.execute(s)
@@ -659,7 +667,7 @@ def alumnieventpgm(request):
         c.execute(s)
         data=c.fetchall()
     return render(request,"alumnieventpgm.html",{"data":data})
-######################################################################
+    ######################################################################
 #                           ALUMNI VACCANCY
 ######################################################################
 def alumnivaccancy(request):
@@ -716,6 +724,9 @@ def alumniovaccancy(request):
     c.execute(s)
     data=c.fetchall()
     return render(request,"alumniothervacc.html",{"data":data,"msg":msg})
+
+
+
 ######################################################################
 #                           ALUMNI CHAT
 ######################################################################
@@ -809,7 +820,7 @@ def batchreport(request):
     return render (request,"batchreport.html",{"data":data,"cat":cat})
 def alumnireport(request):
     data=""
-    c.execute("select * from tblalumni,tblbatchdetails where  tblbatchdetails.alumniid=tblalumni.alumniid")
+    c.execute("select * from tblbatchdetails where alumniid IN (select alumniid from tblalumni)")
     data=c.fetchall() 
     return render(request,"alumnireport.html",{"data":data})
 def unregisteredreport(request):

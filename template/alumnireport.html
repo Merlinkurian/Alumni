@@ -9,33 +9,29 @@ th{
     color: white;
 }
 </style>
-	
+<h2 style="margin: 25px;">Registered User</h2>
+<div style="margin: 50px;">
 
-<table align="center" border='1' style="margin-top: 50px;">
-    <th>ALUMNI ID</th>
+ 
+<table border='1' style="margin-top: 50px;">
 <th>NAME</th>
-<th>ADDRESS</th>
-<th>QUALIFICATION</th>
-<th>EMAIL</th>
 <th>YEAR OF PASSING</th>
 <th> REGISTER NO</th>
-<th>CONTACT</th>
+
+<th>ALUMNI ID</th>
+
+<th>Contact</th>
 
 
 {% for i in data %}
 <tr><td>{{i.0}}</td>
 <td>{{i.1}}</td>
 
+<td>{{i.2}}</td>
+
+<td>{{i.3}}</td>
 <td>{{i.4}}</td>
-
-<td>{{i.6}}</td>
-<td>{{i.8}}</td>
-<td>{{i.13}}</td>
-<td>{{i.14}}</td>
-<td>{{i.16}}</td>
-
 </tr>
-<br>
 
 
 {% endfor %}
