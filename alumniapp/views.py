@@ -798,9 +798,9 @@ def alumnipayment(request):
         a=request.POST.get("name")
         b=request.POST.get("cnumber")
         ed=request.POST.get("exdate")
-        d=request.POST.get("cvv")
+       
         totalprice=request.POST.get("totalprice")
-        s=c.execute("insert into tbl_payment(regid,name,cnumber,exdate,cvv,totalprice,status) values('"+str(regid)+"','"+str(a)+"','"+str(b)+"','"+str(ed)+"','"+str(d)+"','"+str(totalprice)+"','paid')")      
+        s=c.execute("insert into tbl_payment(regid,name,cnumber,exdate,totalprice,status) values('"+str(regid)+"','"+str(a)+"','"+str(b)+"','"+str(ed)+"','"+str(totalprice)+"','paid')")      
         msg="Payment Successfull"
         db.commit()
         return HttpResponseRedirect("/alumnihome")
